@@ -70,11 +70,11 @@ def remove_alone(img, num_iter = 1, num_neighbors = 4):
         prv = mask.copy()
     return res
 
-def fill_holes(src, hole_size):
+def fill_holes(src, hole_size=10):
     cur = 255 * (src == 0).astype('uint8')
 
     des = cv2.bitwise_not(cur)
-    contour,hier = cv2.findContours(des,cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE)
+    contour, hier = cv2.findContours(des,cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE)
 
     for cnt in contour:
         cv2.drawContours(des,[cnt],0,255,-1)
